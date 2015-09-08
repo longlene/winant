@@ -5,7 +5,7 @@
 Name "WinAnt"
 
 ; The file to write
-OutFile "winant-install-v7.exe"
+OutFile "winant-install-v8.exe"
 
 ; The default installation directory
 InstallDir $PROGRAMFILES\WinAnt
@@ -40,9 +40,6 @@ Page instfiles "" "" "post_install"
 
 Function post_install
   MessageBox MB_OK "You may need to log off and log back in to complete the install process."
-  MessageBox MB_YESNO "One more thing. If WinAnt is useful to you, please consider donating at http://goo.gl/nrjvm. Donate now?" IDNO nodonate
-    ExecShell "open" "http://goo.gl/nrjvm"
-  nodonate:
 FunctionEnd
 
 UninstPage uninstConfirm
@@ -56,7 +53,7 @@ SectionIn RO ; Makes this section required
   ; Set output path to the installation directory.
   SetOutPath $INSTDIR
   
-  File /r apache-ant-1.8.2\*.*
+  File /r apache-ant-1.9.6\*.*
 
   ; Put Ant on the path
   WriteRegExpandStr HKCU "Environment" "ANT_HOME" "$INSTDIR"
